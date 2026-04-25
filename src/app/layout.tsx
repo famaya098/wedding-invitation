@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'The Wedding of Fiqri & Beloved',
+  title: 'The Wedding of Freddy y Zoila',
   description:
     'Join us in celebrating the union of Fiqri and his beloved. Discover our love story, wedding details, and more.',
 };
