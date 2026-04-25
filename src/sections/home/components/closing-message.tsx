@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
+import { Heart, Mail, Phone } from 'lucide-react';
 
 interface ClosingMessageProps {
   bride: string;
@@ -12,16 +13,10 @@ interface ClosingMessageProps {
 export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
   const { t } = useTranslation('home');
 
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <div
-      ref={ref}
-      className="py-20 px-4 bg-gradient-to-br from-rose-100 to-pink-200"
-    >
+    <div ref={ref} className="py-20 px-4" style={{ background: 'linear-gradient(135deg, #fdf8f0 0%, #fef3e2 100%)' }}>
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -29,26 +24,27 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-gray-800 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-6" style={{ color: '#3d2e0e' }}>
             {t('closing-message.title')}
           </h2>
-          <div className="w-24 h-px bg-rose-500 mx-auto mb-8"></div>
+          <div className="w-24 h-px mx-auto mb-8" style={{ background: '#d4af37' }}></div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.9 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-white/40 mb-12"
+          className="rounded-3xl p-8 md:p-12 shadow-xl mb-12"
+          style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #e8c97a' }}
         >
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 leading-relaxed mb-6 font-light">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed mb-6 font-light" style={{ color: '#5c4a1e' }}>
             &quot;{t('closing-message.quote')}&quot;
           </p>
-          <div className="text-base sm:text-lg text-gray-600">
+          <div className="text-base sm:text-lg" style={{ color: '#7a6030' }}>
             {t('closing-message.with-love')}
           </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-rose-600 mt-2">
-            {groom} & {bride}
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif mt-2" style={{ color: '#b8860b' }}>
+            {groom} &amp; {bride}
           </div>
         </motion.div>
 
@@ -58,31 +54,40 @@ export const ClosingMessage = ({ bride, groom }: ClosingMessageProps) => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="space-y-6"
         >
-          <div className="flex justify-center space-x-4 text-2xl sm:text-3xl md:text-4xl">
-            <span className="animate-bounce">💕</span>
-            <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>
-              💖
-            </span>
-            <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>
-              💕
-            </span>
+          <div className="flex justify-center space-x-5">
+            {[0, 0.1, 0.2].map((delay, i) => (
+              <motion.div
+                key={i}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay, ease: 'easeInOut' }}
+                style={{ color: '#d4af37' }}
+              >
+                <Heart size={28} fill="currentColor" strokeWidth={0} />
+              </motion.div>
+            ))}
           </div>
 
-          <p className="text-sm sm:text-base text-gray-600">
-            #FiqriAndMio2025 #LoveWins #ForeverStartsNow
+          <p className="text-sm sm:text-base" style={{ color: '#9a7c40' }}>
+            {t('closing-message.hashtags')}
           </p>
         </motion.div>
 
-        {/* Footer */}
+        {/* Footer contact */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 pt-8 border-t border-white/40"
+          className="mt-16 pt-8"
+          style={{ borderTop: '1px solid rgba(212,175,55,0.3)' }}
         >
-          <p className="text-xs sm:text-sm text-gray-500">
-            Questions? Contact us at wedding@fihaa.my.id
-          </p>
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm" style={{ color: '#9a7c40' }}>
+            <Phone size={13} strokeWidth={1.5} />
+            <span>{t('closing-message.contact')}</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 mt-2 text-xs sm:text-sm" style={{ color: '#9a7c40' }}>
+            <Mail size={13} strokeWidth={1.5} />
+            <span>Confirma tu asistencia al 7563-2086</span>
+          </div>
         </motion.div>
       </div>
     </div>

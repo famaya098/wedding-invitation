@@ -4,34 +4,31 @@ import { motion } from 'motion/react';
 import {
   formatWeddingTime,
   generateGoogleCalendarLink,
-  generateMapLink,
 } from '@/lib/wedding-utils';
 import type { WeddingConfigType } from '@/types';
 import { useTranslation } from 'react-i18next';
 import { useTranslate } from '@/locales';
+import { Heart, CalendarPlus, MapPin, Shirt, ParkingSquare, Phone } from 'lucide-react';
 
 interface WeddingDetailsCardProps {
   date: Date;
   venue: WeddingConfigType['venue'];
 }
 
-export const WeddingDetailsCard = ({
-  date,
-  venue,
-}: WeddingDetailsCardProps) => {
+export const WeddingDetailsCard = ({ date, venue }: WeddingDetailsCardProps) => {
   const { currentLang } = useTranslate();
   const { t } = useTranslation('home');
 
   const calendarEvent = {
     title: t('details.our-wedding-day'),
     start: date,
-    end: new Date(date.getTime() + 5 * 60 * 60 * 1000), // 5 hours later
+    end: new Date(date.getTime() + 5 * 60 * 60 * 1000),
     description: t('details.join-us'),
     location: venue.ceremony.address,
   };
 
   return (
-    <div className="py-20 bg-gradient-to-br from-white to-rose-50/50">
+    <div className="py-20" style={{ background: 'linear-gradient(180deg, #fdf8f0 0%, #ffffff 100%)' }}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -41,11 +38,11 @@ export const WeddingDetailsCard = ({
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-gray-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4" style={{ color: '#3d2e0e' }}>
             {t('details.title')}
           </h2>
-          <div className="w-24 h-px bg-rose-400 mx-auto mb-6"></div>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-24 h-px mx-auto mb-6" style={{ background: '#d4af37' }}></div>
+          <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto" style={{ color: '#7a6030' }}>
             {t('details.join-us-text')}
           </p>
         </motion.div>
@@ -56,24 +53,25 @@ export const WeddingDetailsCard = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative bg-gradient-to-br from-white via-rose-50/30 to-pink-50/50 rounded-3xl shadow-2xl p-8 sm:p-10 md:p-12 mb-12 border border-rose-100/50 overflow-hidden group"
+          className="relative rounded-3xl shadow-2xl p-8 sm:p-10 md:p-12 mb-12 overflow-hidden group"
+          style={{ background: 'linear-gradient(135deg, #ffffff 0%, #fdf8f0 50%, #fef3e2 100%)', border: '1px solid #e8c97a' }}
         >
-          {/* Background Decorations */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-rose-200/20 to-pink-200/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"></div>
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-purple-200/20 to-rose-200/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"></div>
+          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(212,175,55,0.15)' }}></div>
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500" style={{ background: 'rgba(180,140,30,0.12)' }}></div>
 
           <div className="relative z-10">
-            {/* Save the Date Header */}
+            {/* Save the Date */}
             <div className="text-center mb-8">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-rose-500/10 to-pink-500/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-rose-200/50"
+                className="inline-flex items-center gap-3 rounded-full px-6 py-3 mb-6"
+                style={{ background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.4)' }}
               >
-                <span className="text-2xl">💕</span>
-                <span className="text-sm sm:text-base font-semibold text-rose-600 tracking-wide uppercase">
+                <Heart size={20} style={{ color: '#d4af37' }} fill="currentColor" strokeWidth={0} />
+                <span className="text-sm sm:text-base font-semibold tracking-wide uppercase" style={{ color: '#b8860b' }}>
                   {t('details.date')}
                 </span>
               </motion.div>
@@ -89,12 +87,12 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]" style={{ background: 'linear-gradient(135deg, #b8860b, #d4af37)' }}>
                   <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none">
                     {date.getDate()}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider mt-3">
+                <p className="text-xs sm:text-sm font-medium uppercase tracking-wider mt-3" style={{ color: '#9a7c40' }}>
                   {t('details.day')}
                 </p>
               </motion.div>
@@ -107,20 +105,16 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-gradient-to-br from-purple-500 to-indigo-600 text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]" style={{ background: 'linear-gradient(135deg, #6b4f10, #9a7c40)' }}>
                   <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-none mb-1">
-                    {date
-                      .toLocaleDateString(currentLang.numberFormat.code, {
-                        month: 'short',
-                      })
-                      .toUpperCase()}
+                    {date.toLocaleDateString('es-ES', { month: 'short' }).toUpperCase()}
                   </div>
                   <div className="text-sm sm:text-base md:text-lg font-medium opacity-90">
                     {date.getFullYear()}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider mt-3">
-                  {t('details.month')} & {t('details.year')}
+                <p className="text-xs sm:text-sm font-medium uppercase tracking-wider mt-3" style={{ color: '#9a7c40' }}>
+                  {t('details.month')} &amp; {t('details.year')}
                 </p>
               </motion.div>
 
@@ -132,18 +126,18 @@ export const WeddingDetailsCard = ({
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="text-center group-hover:scale-105 transition-transform duration-300 flex-1 sm:flex-none"
               >
-                <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+                <div className="text-white rounded-2xl p-4 sm:p-6 shadow-lg mb-2 h-24 sm:h-28 md:h-32 lg:h-36 flex flex-col items-center justify-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]" style={{ background: 'linear-gradient(135deg, #c8a028, #e8c060)' }}>
                   <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold leading-none">
                     {formatWeddingTime(date, currentLang.numberFormat.code)}
                   </div>
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider mt-3">
+                <p className="text-xs sm:text-sm font-medium uppercase tracking-wider mt-3" style={{ color: '#9a7c40' }}>
                   {t('details.time')}
                 </p>
               </motion.div>
             </div>
 
-            {/* Weekday Display */}
+            {/* Weekday */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -151,37 +145,25 @@ export const WeddingDetailsCard = ({
               transition={{ duration: 0.5, delay: 0.7 }}
               className="text-center mb-8 px-2"
             >
-              <div className="relative inline-block w-full max-w-sm sm:max-w-md md:max-w-lg bg-gradient-to-r from-white/90 via-rose-50/80 to-white/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 shadow-xl border border-rose-100/50 group/weekday hover:shadow-2xl transition-all duration-300">
-                {/* Decorative elements */}
-                <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full opacity-60 group-hover/weekday:scale-110 transition-transform duration-300"></div>
-                <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full opacity-60 group-hover/weekday:scale-110 transition-transform duration-300"></div>
-
-                <div className="relative z-10">
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-3">
-                    <span className="text-xl sm:text-2xl md:text-3xl">🗓️</span>
-                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif text-gray-800 font-bold text-center leading-tight">
-                      {date.toLocaleDateString(currentLang.numberFormat.code, {
-                        weekday: 'long',
-                      })}
-                    </p>
-                    <span className="text-xl sm:text-2xl md:text-3xl">🗓️</span>
-                  </div>
-                  <div className="w-16 sm:w-20 md:w-24 h-px bg-gradient-to-r from-transparent via-rose-400 to-transparent mx-auto mb-3"></div>
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 font-medium">
-                    {date.toLocaleDateString(currentLang.numberFormat.code, {
-                      month: 'long',
-                      day: 'numeric',
-                      year: 'numeric',
-                    })}
+              <div className="relative inline-block w-full max-w-sm sm:max-w-md md:max-w-lg rounded-2xl sm:rounded-3xl px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 shadow-xl" style={{ background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(212,175,55,0.4)' }}>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-3">
+                  <Heart size={22} style={{ color: '#d4af37' }} fill="currentColor" strokeWidth={0} />
+                  <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif font-bold text-center leading-tight" style={{ color: '#3d2e0e' }}>
+                    {date.toLocaleDateString('es-ES', { weekday: 'long' }).charAt(0).toUpperCase() + date.toLocaleDateString('es-ES', { weekday: 'long' }).slice(1)}
                   </p>
-                  <p className="text-xs sm:text-sm md:text-base text-rose-600 font-semibold mt-2">
-                    {t('details.mark-calendar')}
-                  </p>
+                  <Heart size={22} style={{ color: '#d4af37' }} fill="currentColor" strokeWidth={0} />
                 </div>
+                <div className="w-16 sm:w-20 md:w-24 h-px mx-auto mb-3" style={{ background: 'linear-gradient(90deg, transparent, #d4af37, transparent)' }}></div>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium" style={{ color: '#7a6030' }}>
+                  {date.toLocaleDateString('es-ES', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </p>
+                <p className="text-xs sm:text-sm md:text-base font-semibold mt-2" style={{ color: '#b8860b' }}>
+                  {t('details.mark-calendar')}
+                </p>
               </div>
             </motion.div>
 
-            {/* Call to Action */}
+            {/* Add to Calendar */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -195,130 +177,66 @@ export const WeddingDetailsCard = ({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 text-white px-8 py-4 rounded-2xl font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300 group/btn"
+                className="inline-flex items-center gap-3 text-white px-8 py-4 rounded-2xl font-semibold text-base sm:text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                style={{ background: 'linear-gradient(90deg, #b8860b, #d4af37, #9a7c40)' }}
               >
-                <span className="text-xl group-hover/btn:scale-110 transition-transform duration-200">
-                  📅
-                </span>
+                <CalendarPlus size={20} strokeWidth={1.8} />
                 <span>{t('details.add-to-calendar')}</span>
-                <motion.span
-                  className="text-sm opacity-75"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
               </motion.a>
-
-              <p className="text-xs sm:text-sm text-gray-500 mt-4 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm mt-4 max-w-md mx-auto" style={{ color: '#9a7c40' }}>
                 {t('details.message')}
               </p>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Venue Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Ceremony Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 group hover:shadow-2xl transition-all duration-300"
-          >
-            <div className="text-center mb-6">
-              <div className="inline-block bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
-                <div className="text-4xl">⛪</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-                {t('details.ceremony')}
-              </h3>
-              <div className="w-16 h-px bg-purple-400 mx-auto"></div>
+        {/* Single unified venue card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-xl mx-auto bg-white rounded-3xl shadow-xl p-8 group hover:shadow-2xl transition-all duration-300"
+          style={{ border: '1px solid #f0e0b0' }}
+        >
+          <div className="text-center mb-6">
+            <div
+              className="inline-block rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300"
+              style={{ background: 'linear-gradient(135deg, #fef3e2, #fde8c0)' }}
+            >
+              <MapPin size={32} style={{ color: '#b8860b' }} strokeWidth={1.5} />
             </div>
-
-            <div className="space-y-4 text-center">
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">
-                  {venue.ceremony.name}
-                </h4>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  {venue.ceremony.address}
-                </p>
-              </div>
-
-              <div className="bg-gray-50 rounded-xl p-4">
-                <p className="font-medium text-gray-800 text-sm sm:text-base">
-                  {t('details.time')}
-                </p>
-                <p className="text-purple-600 font-semibold text-sm sm:text-base">
-                  {venue.ceremony.time}
-                </p>
-              </div>
-
-              <motion.a
-                href={generateMapLink(venue.ceremony.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300"
-              >
-                📍 {t('details.get-directions')}
-              </motion.a>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2" style={{ color: '#3d2e0e' }}>
+              {venue.ceremony.name}
+            </h3>
+            <p className="text-sm sm:text-base" style={{ color: '#7a6030' }}>
+              {venue.ceremony.address}
+            </p>
+            <div className="w-16 h-px mx-auto mt-4" style={{ background: '#d4af37' }} />
+          </div>
+          <div className="space-y-4 text-center">
+            <div className="rounded-xl p-4" style={{ background: '#fdf8f0' }}>
+              <p className="font-medium text-sm sm:text-base" style={{ color: '#5c4a1e' }}>
+                {t('details.time')}
+              </p>
+              <p className="font-semibold text-sm sm:text-base" style={{ color: '#b8860b' }}>
+                {venue.ceremony.time}
+              </p>
             </div>
-          </motion.div>
-
-          {/* Reception Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 group hover:shadow-2xl transition-all duration-300"
-          >
-            <div className="text-center mb-6">
-              <div className="inline-block bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
-                <div className="text-4xl">🎉</div>
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-                {t('details.reception')}
-              </h3>
-              <div className="w-16 h-px bg-emerald-400 mx-auto"></div>
-            </div>
-
-            <div className="space-y-4 text-center">
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 text-sm sm:text-base">
-                  {venue.reception.name}
-                </h4>
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  {venue.reception.address}
-                </p>
-              </div>
-
-              <div className="bg-gray-50 rounded-xl p-4">
-                <p className="font-medium text-gray-800 text-sm sm:text-base">
-                  {t('details.time')}
-                </p>
-                <p className="text-emerald-600 font-semibold text-sm sm:text-base">
-                  {venue.reception.time}
-                </p>
-              </div>
-
-              <motion.a
-                href={generateMapLink(venue.reception.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300"
-              >
-                📍 {t('details.get-directions')}
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
+            <motion.a
+              href="https://maps.google.com/maps?q=La+Casa+del+Parque+frente+al+Tin+Marin+San+Salvador"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 text-white px-6 py-3 rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300"
+              style={{ background: 'linear-gradient(90deg, #b8860b, #d4af37)' }}
+            >
+              <MapPin size={14} strokeWidth={1.5} />
+              {t('details.get-directions')}
+            </motion.a>
+          </div>
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div
@@ -328,25 +246,25 @@ export const WeddingDetailsCard = ({
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-12 text-center"
         >
-          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-8 border border-rose-100">
-            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 mb-4">
+          <div className="rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, #fdf8f0, #fef3e2)', border: '1px solid #e8c97a' }}>
+            <h4 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4" style={{ color: '#3d2e0e' }}>
               {t('details.please-note')}
             </h4>
-            <div className="grid md:grid-cols-3 gap-6 text-xs sm:text-sm text-gray-600">
-              <div className="flex flex-col items-center">
-                <div className="text-xl sm:text-2xl mb-2">👗</div>
-                <p className="font-medium">{t('details.dress-code')}</p>
+            <div className="grid md:grid-cols-3 gap-6 text-xs sm:text-sm" style={{ color: '#7a6030' }}>
+              <div className="flex flex-col items-center gap-2">
+                <Shirt size={22} style={{ color: '#b8860b' }} strokeWidth={1.5} />
+                <p className="font-medium" style={{ color: '#5c4a1e' }}>{t('details.dress-code')}</p>
                 <p>{t('details.formal-attire')}</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="text-xl sm:text-2xl mb-2">🚗</div>
-                <p className="font-medium">{t('details.parking')}</p>
+              <div className="flex flex-col items-center gap-2">
+                <ParkingSquare size={22} style={{ color: '#b8860b' }} strokeWidth={1.5} />
+                <p className="font-medium" style={{ color: '#5c4a1e' }}>{t('details.parking')}</p>
                 <p>{t('details.valet-available')}</p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="text-xl sm:text-2xl mb-2">📱</div>
-                <p className="font-medium">{t('details.contact')}</p>
-                <p>+62 812 3456 7890</p>
+              <div className="flex flex-col items-center gap-2">
+                <Phone size={22} style={{ color: '#b8860b' }} strokeWidth={1.5} />
+                <p className="font-medium" style={{ color: '#5c4a1e' }}>{t('details.contact')}</p>
+                <p>7563-2086</p>
               </div>
             </div>
           </div>

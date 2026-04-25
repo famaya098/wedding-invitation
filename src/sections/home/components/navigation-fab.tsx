@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { Heart } from 'lucide-react';
 
 interface NavigationFABProps {
   activeSection: string;
@@ -72,9 +73,9 @@ export default function NavigationFAB({
           />
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f43f5e" />
-              <stop offset="50%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#b8860b" />
+              <stop offset="50%" stopColor="#d4af37" />
+              <stop offset="100%" stopColor="#9a7c40" />
             </linearGradient>
           </defs>
         </svg>
@@ -106,17 +107,11 @@ export default function NavigationFAB({
           {/* Icon container */}
           <div className="relative z-10 flex items-center justify-center w-full h-full">
             <motion.div
-              animate={{
-                rotate: 360,
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                rotate: { duration: 8, repeat: Infinity, ease: 'linear' },
-                scale: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
-              }}
-              className="text-2xl filter drop-shadow-sm"
+              animate={{ scale: [1, 1.15, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              style={{ color: '#d4af37' }}
             >
-              💕
+              <Heart size={22} fill="currentColor" strokeWidth={0} />
             </motion.div>
           </div>
 

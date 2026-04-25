@@ -12,16 +12,19 @@ import { i18nOptions } from './config-locales';
 
 const init = { ...i18nOptions(), detection: { caches: ['cookie'] } };
 
-// eslint-disable-next-line import/no-named-as-default-member
-i18next
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .use(
-    resourcesToBackend(
-      (lang: string, ns: string) => import(`./langs/${lang}/${ns}.json`)
-    )
+const i18nChain = i18next.use(initReactI18next).use(
+  resourcesToBackend(
+    (lang: string, ns: string) => import(`./langs/${lang}/${ns}.json`)
   )
-  .init(init);
+);
+
+// LanguageDetector uses localStorage/sessionStorage — only safe in browser
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line import/no-named-as-default-member
+  i18nChain.use(LanguageDetector);
+}
+
+i18nChain.init(init);
 
 // ----------------------------------------------------------------------
 

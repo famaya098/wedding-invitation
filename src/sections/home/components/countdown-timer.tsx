@@ -49,32 +49,17 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   }, [targetDate]);
 
   const timeUnits = [
-    {
-      label: t('details.day'),
-      value: timeLeft.days,
-      color: 'from-rose-400 to-pink-500',
-    },
-    {
-      label: t('details.hours'),
-      value: timeLeft.hours,
-      color: 'from-purple-400 to-indigo-500',
-    },
-    {
-      label: t('details.minutes'),
-      value: timeLeft.minutes,
-      color: 'from-blue-400 to-cyan-500',
-    },
-    {
-      label: t('details.seconds'),
-      value: timeLeft.seconds,
-      color: 'from-emerald-400 to-teal-500',
-    },
+    { label: t('details.day'), value: timeLeft.days, color: 'from-amber-500 to-yellow-400' },
+    { label: t('details.hours'), value: timeLeft.hours, color: 'from-yellow-600 to-amber-500' },
+    { label: t('details.minutes'), value: timeLeft.minutes, color: 'from-amber-600 to-yellow-500' },
+    { label: t('details.seconds'), value: timeLeft.seconds, color: 'from-yellow-500 to-amber-400' },
   ];
 
   return (
     <div
       ref={ref}
-      className="py-16 px-4 bg-gradient-to-br from-gray-50 to-rose-50/30"
+      className="py-16 px-4"
+      style={{ background: 'linear-gradient(135deg, #fdf8f0 0%, #fef9ee 100%)' }}
     >
       <div className="max-w-4xl mx-auto text-center">
         {/* Header */}
@@ -84,11 +69,11 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-4" style={{ color: '#3d2e0e' }}>
             {t('details.countdown-title')}
           </h2>
-          <div className="w-24 h-px bg-rose-400 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-base sm:text-lg md:text-xl">
+          <div className="w-24 h-px mx-auto mb-4" style={{ background: '#d4af37' }}></div>
+          <p className="text-base sm:text-lg md:text-xl" style={{ color: '#7a6030' }}>
             {t('details.countdown-subtitle')}
           </p>
         </motion.div>
@@ -112,7 +97,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
               }}
               className="relative group"
             >
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2">
+              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2" style={{ border: '1px solid #f0e0b0' }}>
                 {/* Background Gradient */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${unit.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
@@ -125,7 +110,7 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </div>
-                  <div className="text-gray-600 font-medium text-xs sm:text-sm md:text-base uppercase tracking-wider">
+                  <div className="font-medium text-xs sm:text-sm md:text-base uppercase tracking-wider" style={{ color: '#9a7c40' }}>
                     {unit.label}
                   </div>
                 </div>
@@ -146,8 +131,8 @@ export const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-12"
         >
-          <div className="inline-block bg-white/60 backdrop-blur-sm rounded-full px-6 py-3 shadow-md border border-white/40">
-            <p className="text-gray-700 font-medium text-sm sm:text-base md:text-lg">
+          <div className="inline-block rounded-full px-6 py-3 shadow-md" style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid #e8c97a' }}>
+            <p className="font-medium text-sm sm:text-base md:text-lg" style={{ color: '#5c4a1e' }}>
               {timeLeft.days > 0
                 ? `${timeLeft.days} ${t('details.days-until')}`
                 : timeLeft.hours > 0

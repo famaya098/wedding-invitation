@@ -2,8 +2,17 @@ import { NAVIGATION_ANIMATIONS } from '@/constants/navigation';
 import type { NavigationSection } from '@/types/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { Home, Heart, Calendar, MapPin, Camera, Mail } from 'lucide-react';
 
-// NavigationButton Component for better code organization
+const ICON_MAP: Record<string, React.ElementType> = {
+  Home,
+  Heart,
+  Calendar,
+  MapPin,
+  Camera,
+  Mail,
+};
+
 interface NavigationButtonProps {
   section: NavigationSection;
   index: number;
@@ -18,14 +27,14 @@ export function NavigationButton({
   onClick,
 }: NavigationButtonProps) {
   const { t } = useTranslation('home');
+  const IconComponent = ICON_MAP[section.icon] ?? Home;
 
   const baseClasses =
     'relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 group overflow-hidden cursor-pointer';
 
   const activeClasses = 'text-white shadow-lg';
 
-  const inactiveClasses =
-    'text-gray-600 hover:text-rose-500 hover:bg-rose-50/80';
+  const inactiveClasses = 'text-stone-600 hover:text-amber-700 hover:bg-amber-50/80';
 
   return (
     <motion.button
@@ -37,7 +46,6 @@ export function NavigationButton({
       whileTap={NAVIGATION_ANIMATIONS.button.tap}
       className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
     >
-      {/* Animated Background for Active State */}
       <AnimatePresence>
         {isActive && (
           <motion.div
@@ -50,7 +58,6 @@ export function NavigationButton({
         )}
       </AnimatePresence>
 
-      {/* Glow Effect for Active State */}
       <AnimatePresence>
         {isActive && (
           <motion.div
@@ -63,17 +70,15 @@ export function NavigationButton({
         )}
       </AnimatePresence>
 
-      {/* Icon with Bounce Animation */}
       <motion.span
-        className="text-sm sm:text-base relative z-10"
+        className="relative z-10 flex items-center"
         animate={isActive ? NAVIGATION_ANIMATIONS.icon.active : {}}
         transition={NAVIGATION_ANIMATIONS.icon.transition}
         whileHover={NAVIGATION_ANIMATIONS.icon.hover}
       >
-        {section.icon}
+        <IconComponent size={15} strokeWidth={1.8} />
       </motion.span>
 
-      {/* Label with Slide Animation */}
       <motion.span
         className="hidden sm:inline-block whitespace-nowrap relative z-10 text-xs sm:text-sm"
         initial={{ opacity: 0, x: -10 }}
@@ -86,7 +91,6 @@ export function NavigationButton({
         }
       </motion.span>
 
-      {/* Active Indicator Dot with Pulse */}
       <AnimatePresence>
         {isActive && (
           <motion.div
@@ -104,21 +108,6 @@ export function NavigationButton({
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Hover Ripple Effect */}
-      <motion.div
-        className="absolute inset-0 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(circle at center, ${getRippleColor(
-            section.gradient
-          )} 0%, transparent 70%)`,
-        }}
-      />
     </motion.button>
   );
 }
-
-// Helper function to get ripple color
-const getRippleColor = (gradient: string): string => {
-  return gradient.includes('rose') ? '#f43f5e' : '#8b5cf6';
-};

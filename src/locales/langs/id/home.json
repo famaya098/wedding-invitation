@@ -8,7 +8,10 @@
     "invitation-quote": "Kau mengubah duniaku sejak pertama kali kita bertemu...",
     "click-to-open-hover": "Klik untuk membuka undangan",
     "click-to-open": "Ketuk undangan untuk membuka",
-    "opening-the-invitation": "Membuka undangan..."
+    "opening-the-invitation": "Membuka undangan...",
+    "enter-invitation": "Ver invitación",
+    "cupos-one": "1 lugar reservado para ti",
+    "cupos-many": "lugares reservados para ti"
   },
   "closing-message": {
     "title": "Kami Tidak Sabar untuk Merayakan",
@@ -145,6 +148,8 @@
     "deadline-help": "Mohon merespons sebelum tanggal ini untuk membantu kami merencanakan perayaan yang sempurna untuk semua.",
     "questions": "Pertanyaan?",
     "questions-help": "Kami siap membantu!",
+    "reserved-spots": "Lugares reservados",
+    "spots-note": "Estos lugares están reservados especialmente para ti. El número máximo de asistentes de tu invitación ya fue definido.",
     "gift-registry": "Daftar Kado",
     "presence-present": "Kehadiran Anda adalah hadiah terbaik bagi kami",
     "registry-text": "Jika Anda ingin memberikan hadiah, kami telah mendaftar di:"
@@ -158,21 +163,21 @@
     "rsvp": "RSVP Sekarang"
   },
   "schedule": {
-    "title": "Jadwal Acara",
-    "guest-arrival": "Kedatangan & Tempat Duduk Tamu",
-    "welcome-drinks": "Minuman selamat datang tersedia",
-    "wedding-ceremony": "Akad Nikah",
-    "vows": "Tukar janji",
-    "photography": "Sesi Fotografi",
-    "welcome-drink": "Welcome drink untuk tamu",
-    "reception-begins": "Resepsi Dimulai",
-    "dinner-celebration": "Makan malam & perayaan",
-    "first-dance": "Tarian Pertama",
-    "special-moment": "Momen spesial pengantin",
-    "dancing-party": "Menari & Pesta",
-    "celebration-continues": "Mari lanjutkan perayaannya!",
-    "send-off": "Pelepasan",
-    "sparkler-farewell": "Perpisahan dengan kembang api"
+    "title": "Programa del Día",
+    "guest-arrival": "Llegada de Invitados",
+    "welcome-drinks": "Bienvenida y acomodación",
+    "wedding-ceremony": "Ceremonia",
+    "ceremony-desc": "Unión matrimonial",
+    "photography": "Sesión Fotográfica",
+    "photography-desc": "Fotos con los novios y familia",
+    "toast": "Brindis",
+    "toast-desc": "Celebración con los novios",
+    "reception-begins": "Banquete",
+    "dinner-celebration": "Cena y celebración",
+    "cake": "Pastel de Bodas",
+    "cake-desc": "Corte del pastel",
+    "send-off": "Despedida",
+    "sparkler-farewell": "¡Hasta pronto! Gracias por acompañarnos"
   },
   "music": {
     "wedding-music": "Musik Wedding",

@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Music2, Settings } from 'lucide-react';
 
 interface MusicPlayerProps {
   className?: string;
@@ -135,9 +136,9 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="text-4xl mb-4"
+                  style={{ color: '#d4af37' }}
                 >
-                  🎵
+                  <Music2 size={36} strokeWidth={1.5} />
                 </motion.div>
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
                   {t('music.enable-music')}
@@ -149,8 +150,8 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
 
               {/* Browser Settings Guide */}
               <div className="bg-blue-50 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-blue-800 mb-2 flex items-center">
-                  <span className="mr-2">⚙️</span>
+                <h4 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+                  <Settings size={14} strokeWidth={1.5} />
                   {t('music.how-to-enable')}
                 </h4>
                 <div className="text-blue-700 text-sm space-y-1">
@@ -207,9 +208,9 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
             <motion.div
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-xl"
+              style={{ color: '#d4af37' }}
             >
-              🎵
+              <Music2 size={20} strokeWidth={1.5} />
             </motion.div>
             <div>
               <div className="font-medium text-sm">
@@ -395,9 +396,9 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
-                  className="text-2xl filter drop-shadow-sm"
+                  style={{ color: '#d4af37' }}
                 >
-                  🎵
+                  <Music2 size={22} strokeWidth={1.5} />
                 </motion.div>
               )}
             </div>
@@ -419,10 +420,10 @@ export default function MusicPlayer({ className = '' }: MusicPlayerProps) {
           >
             <div className="font-medium">
               {isPlaying
-                ? `🎵 ${t('music.playing')}`
+                ? t('music.playing')
                 : autoplayBlocked && !hasInteracted
-                ? `🎵 ${t('music.click-to-start')}`
-                : `🎵 ${t('music.paused')}`}
+                ? t('music.click-to-start')
+                : t('music.paused')}
             </div>
             <div className="text-gray-300 text-xs">
               {autoplayBlocked && !hasInteracted

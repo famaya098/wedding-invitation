@@ -1,25 +1,26 @@
 export const WEDDING_CONFIG = {
-  date: new Date('2025-10-15T16:00:00'),
+  date: new Date('2026-05-24T16:00:00'),
   bride: {
-    name: 'Mio',
-    fullName: 'Akiyama Mio',
-    photo: '/assets/images/bride-circle.png',
+    name: 'Zoila',
+    fullName: 'Zoila',
+    photo: '/assets/images/zoila.png',
   },
   groom: {
-    name: 'Fiqri',
-    fullName: 'M Fiqri Haikhar Anwar',
-    photo: '/assets/images/groom-circle.png',
+    name: 'Freddy',
+    fullName: 'Freddy',
+    photo: '/assets/images/freddy.png',
   },
   venue: {
     ceremony: {
-      name: 'Masjid Songkok Recca Bone',
-      address: 'Jl. Jend. Ahmad Yani',
+      name: 'La Casa del Parque',
+      address: 'Frente al Tin Marín',
       time: '4:00 PM',
     },
     reception: {
-      name: 'Hotel Novena Bone',
-      address: 'Jl. Jend. Ahmad Yani No.25',
-      time: '6:30 PM',
+      name: 'La Casa del Parque',
+      address: 'Frente al Tin Marín',
+      time: '4:00 PM',
     },
   },
+  contact: '7563-2086',
 };
